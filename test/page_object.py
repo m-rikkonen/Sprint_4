@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ED
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
+import datetime
 
 
 
@@ -86,8 +87,9 @@ class OrderPageYandexScooter2:
     def wait_for_load_abort_rent(self):
         WebDriverWait(self.driver, 3).until(ED.visibility_of_element_located(self.page_about_rent))
 
-    def set_date(self, date):
-        self.driver.find_element(*self.date_field).send_keys(date)
+    def set_date(self):
+        date = datetime.date.today() + datetime.timedelta(days=1)
+        self.driver.find_element(*self.date_field).send_keys(date.strftime("%d.%m.%Y"))
         self.driver.find_element(*self.date_field).send_keys(Keys.ENTER)
 
     def set_rental_period(self, rental_period):

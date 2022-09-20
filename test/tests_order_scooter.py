@@ -30,7 +30,7 @@ class TestOrderScooter():
         page_order.click_button_next()
         page_order2 = OrderPageYandexScooter2(self.driver)
         page_order2.wait_for_load_abort_rent()
-        page_order2.set_date('22.08.2022')
+        page_order2.set_date()
         page_order2.set_rental_period('сутки')
         page_order2.click_button_order()
         page_order2.wait_for_load_pop_up_window()
@@ -59,7 +59,7 @@ class TestOrderScooter():
         page_order1.click_button_next()
         page_order2 = OrderPageYandexScooter2(self.driver)
         page_order2.wait_for_load_abort_rent()
-        page_order2.set_date('22.08.2022')
+        page_order2.set_date()
         page_order2.set_rental_period('двое суток')
         page_order2.click_checkbox_black()
         page_order2.set_comment('Приезжай скорее')
@@ -96,8 +96,8 @@ class TestOrderScooter():
         page_order.wait_for_load_who_is_the_scooter_for()
         page_header.click_logo_yandex()
         page_header.switching_to_new_tab()
-        WebDriverWait(self.driver, 3).until(ED.visibility_of_element_located((By.CLASS_NAME, 'home-logo__default')))
-        assert self.driver.current_url == 'https://yandex.ru/'
+        WebDriverWait(self.driver, 3).until(ED.visibility_of_element_located((By.CLASS_NAME, 'dzen-desktop__search-37')))
+        assert self.driver.current_url == 'https://dzen.ru/?yredirect=true'
 
 
     @classmethod
